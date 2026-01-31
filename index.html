@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Task - Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="app">
+        <header>
+            <h1>📝 Nexus Task</h1>
+            <button id="themeToggle" aria-label="Alternar modo escuro/claro">🌙</button>
+            
+        </header>
+
+        <section class="input-section">
+            <form id="taskForm" class="task-form">
+                <input type="text" id="taskInput" placeholder="Nova tarefa..." required autofocus maxlength="100">
+
+                <input type="date" id="dueDate" aria-label="Data de entrega">
+
+                <select id="priority" aria-label="Prioridade da tarefa">
+                    <option value="alta">Alta</option>
+                    <option value="media" selected>Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+
+        <section class="controls">
+            <div class="filter-group">
+                <label for="filter">Filtrar:</label>
+                <select id="filter">
+                    <option value="all">Todas</option>
+                    <option value="pending">Pendentes</option>
+                    <option value="done">Concluídas</option>
+                </select>
+            </div>
+            <button onclick="clearDone()">🧹 Limpar concluídas</button>
+            <span id="counter" role="status" aria-live="polite">Tarefas: 0</span>
+        </section>
+
+        <section class="kanban" aria-label="Quadro de tarefas">
+            <div class="column">
+                <h3>⏳ Pendentes</h3>
+                <ul id="taskList" class="task-list"></ul>
+            </div>
+
+            <div class="column">
+                <h3>✅ Concluídas</h3>
+                <ul id="doneList" class="task-list"></ul>
+            </div>
+        </section>
+
+        <div id="editModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+            <div class="modal-box">
+                <h2 id="modalTitle">✏️ Editar tarefa</h2>
+
+                <input type="text" id="editText" placeholder="Título da tarefa" maxlength="100">
+                <input type="date" id="editDate">
+
+                <select id="editPriority">
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+
+                <div class="modal-actions">
+                    <button id="saveEdit" class="btn-save">Salvar Alterações</button>
+                    <button id="cancelEdit" class="btn-cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
