@@ -9,9 +9,7 @@ Projeto leve, rápido e totalmente client-side, utilizando LocalStorage para per
 
 🚀 Demo
 
-http
-
-
+[http](https://nexus-tasker.vercel.app/)
 
 ✨ Funcionalidades
 
