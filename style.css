@@ -1,0 +1,308 @@
+/* ===== BASE ===== */
+body{
+font-family:Arial, sans-serif;
+background:#f4f6fb;
+margin:0;
+transition:.3s;
+}
+
+.app{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* ===== HEADER ===== */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+#themeToggle{
+font-size:20px;
+border:none;
+background:none;
+cursor:pointer;
+}
+
+/* ===== FORM ===== */
+.task-form{
+display:flex;
+gap:10px;
+margin:15px 0;
+flex-wrap:wrap;
+}
+
+.task-form input,
+.task-form select{
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+flex:1;
+}
+
+.task-form button{
+background:#4CAF50;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+transition:.2s;
+}
+
+.task-form button:hover{
+background:#43a047;
+transform:scale(1.05);
+}
+
+/* ===== CONTROLS ===== */
+.controls{
+display:flex;
+justify-content:space-between;
+margin-bottom:15px;
+}
+
+/* ===== KANBAN ===== */
+.kanban{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.column{
+background:#eef1f7;
+padding:15px;
+border-radius:14px;
+min-height:200px;
+}
+
+.column h3{
+margin-top:0;
+}
+
+/* ===== LISTA ===== */
+ul{
+list-style:none;
+padding:0;
+}
+
+.task-item{
+background:white;
+padding:12px;
+border-radius:12px;
+margin-bottom:10px;
+box-shadow:0 3px 6px rgba(0,0,0,0.1);
+transition:.2s;
+}
+
+.task-item:hover{
+transform:translateY(-3px);
+box-shadow:0 6px 12px rgba(0,0,0,0.15);
+}
+
+.task-item.done{
+opacity:0.6;
+text-decoration:line-through;
+}
+
+/* ===== TASK MAIN ===== */
+.task-main{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* ===== BADGES ===== */
+.badge{
+padding:3px 8px;
+border-radius:6px;
+font-size:12px;
+color:white;
+}
+
+.alta{background:#e53935;}
+.media{background:#fb8c00;}
+.baixa{background:#43a047;}
+
+/* ===== ACTIONS ===== */
+.task-actions button{
+border:none;
+background:none;
+cursor:pointer;
+font-size:18px;
+transition:.2s;
+}
+
+.task-actions button:hover{
+transform:scale(1.2);
+}
+
+/* ===== SUBTASKS ===== */
+.subtasks{
+margin-top:10px;
+padding:10px;
+background:#f1f3f7;
+border-radius:10px;
+}
+
+.subtask-form{
+display:flex;
+gap:6px;
+margin-bottom:6px;
+}
+
+.subtask-form input{
+flex:1;
+padding:6px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.subtask-form button{
+background:#4CAF50;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.subtask-item{
+display:flex;
+gap:6px;
+align-items:center;
+}
+
+.task-done{
+text-decoration:line-through;
+opacity:0.6;
+}
+
+/* ===== MODAL ===== */
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.5);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal.show{
+display:flex;
+}
+
+.modal-box{
+background:white;
+padding:25px;
+border-radius:14px;
+width:320px;
+display:flex;
+flex-direction:column;
+gap:12px;
+animation:pop .2s ease;
+}
+
+@keyframes pop{
+from{transform:scale(.9);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+.modal-box input,
+.modal-box select{
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.modal-actions{
+display:flex;
+gap:10px;
+justify-content:flex-end;
+}
+
+.modal-actions button{
+padding:8px 14px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+#saveEdit{
+background:#4CAF50;
+color:white;
+}
+
+#cancelEdit{
+background:#ddd;
+}
+
+/* ===== DARK MODE ===== */
+.dark{
+background:#1e1e1e;
+color:white;
+}
+
+.dark .column{
+background:#2b2b2b;
+}
+
+.dark .task-item{
+background:#2a2a2a;
+color:white;
+}
+
+.dark .subtasks{
+background:#333;
+}
+
+.dark .modal-box{
+background:#2a2a2a;
+color:white;
+}
+.progress{
+height:8px;
+background:#ddd;
+border-radius:10px;
+margin:6px 0;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+background:#4CAF50;
+transition:.3s;
+}
+
+.dark .progress{
+background:#444;
+}
+/* TAREFA ATRASADA */
+.overdue{
+border-left:6px solid #e53935;
+background:#fff5f5;
+}
+
+.dark .overdue{
+background:#3a1f1f;
+}
+
+/* BADGE ATRASADA */
+.late-badge{
+background:#e53935;
+color:white;
+padding:3px 8px;
+border-radius:6px;
+font-size:11px;
+margin-left:6px;
+animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:.5;}
+100%{opacity:1;}
+}
