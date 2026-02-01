@@ -40,12 +40,10 @@ barra de progresso automática
 
 
 ## 📸 Screenshots
+![45450509-BC90-421D-8DC9-8911D10E9BDD](https://github.com/user-attachments/assets/c2996cc3-4461-45a5-b309-8d2d233d8c86)
+![A2B71BB8-A8D2-484F-BD26-A2D04910A2E7](https://github.com/user-attachments/assets/d6828cc6-9f43-4dcb-a30b-a8981765573e)
 
-### Modo Claro
-![Light](screenshots/taskpad-light.png)
 
-### Modo Escuro
-![Dark](screenshots/taskpad-dark.png)
 
 🛠 Tecnologias Utilizadas
 
