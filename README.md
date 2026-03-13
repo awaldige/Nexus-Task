@@ -33,16 +33,11 @@ barra de progresso automática
 ✔ Layout responsivo
 ✔ Salvamento automático no navegador (LocalStorage)
 
-🖼 Preview
-
-/screenshots/taskpad-light.png
-/screenshots/taskpad-dark.png
-
 
 ## 📸 Screenshots
-![45450509-BC90-421D-8DC9-8911D10E9BDD](https://github.com/user-attachments/assets/c2996cc3-4461-45a5-b309-8d2d233d8c86)
-![A2B71BB8-A8D2-484F-BD26-A2D04910A2E7](https://github.com/user-attachments/assets/d6828cc6-9f43-4dcb-a30b-a8981765573e)
 
+![IMG_1991](https://github.com/user-attachments/assets/6ce58322-8201-49f5-bf1b-020897b58659)
+![IMG_1992](https://github.com/user-attachments/assets/5f9da842-6a8e-40c5-a70f-d8cbf7bfadb0)
 
 
 🛠 Tecnologias Utilizadas
