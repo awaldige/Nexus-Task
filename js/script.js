@@ -45,6 +45,7 @@ function isOverdue(task) {
     if (!task.dueDate || task.done) return false;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    // Adicionamos T00:00:00 para evitar problemas de fuso horário no JS
     return new Date(task.dueDate + "T00:00:00") < today;
 }
 
@@ -90,7 +91,8 @@ function render() {
         const progress = calcProgress(task.subtasks);
 
         const li = document.createElement("li");
-        li.className = `task-item ${task.done ? "done" : ""} ${overdue ? "overdue" : ""}`;
+        // ATENÇÃO: Adicionamos task.priority aqui para o CSS pintar o card
+        li.className = `task-item ${task.priority} ${task.done ? "done" : ""} ${overdue ? "overdue" : ""}`;
 
         li.innerHTML = `
             <button class="btn-complete" onclick="toggleTask(${task.id})" aria-label="Concluir tarefa">
@@ -102,7 +104,7 @@ function render() {
                     <div>
                         <strong class="task-text">${task.text}</strong>
                         <div class="task-details">
-                            <span class="badge ${task.priority}">${task.priority}</span>
+                            <span class="badge">${task.priority}</span>
                             <small>📅 ${formatDate(task.dueDate)}</small>
                             ${today ? '<span class="late-badge" style="background:var(--primary)">HOJE</span>' : ''}
                             ${overdue ? '<span class="late-badge">ATRASADA</span>' : ''}
@@ -119,19 +121,19 @@ function render() {
                     <div class="progress">
                         <div class="progress-bar" style="width:${progress}%"></div>
                     </div>
-                    <small>${progress}% concluído</small>
+                    <small style="font-size: 10px">${progress}% concluído</small>
                 ` : ""}
 
                 <div class="subtasks">
                     <div class="subtask-form">
-                        <input placeholder="Subtarefa..." onkeydown="handleSubKey(event,${task.id})">
+                        <input placeholder="Nova subtarefa..." onkeydown="handleSubKey(event,${task.id})">
                         <button onclick="addSub(${task.id},this)">+</button>
                     </div>
                     ${(task.subtasks || []).map((s, i) => `
                         <div class="subtask-item">
                             <input type="checkbox" ${s.done ? "checked" : ""} onchange="toggleSub(${task.id},${i})">
                             <span class="${s.done ? "task-done" : ""}">${s.text}</span>
-                            <button onclick="deleteSub(${task.id},${i})">❌</button>
+                            <button onclick="deleteSub(${task.id},${i})" class="del-sub">×</button>
                         </div>
                     `).join("")}
                 </div>
@@ -148,9 +150,11 @@ function render() {
 // ================= TAREFAS =================
 function toggleTask(id) {
     const t = tasks.find(t => t.id === id);
-    t.done = !t.done;
-    save();
-    render();
+    if (t) {
+        t.done = !t.done;
+        save();
+        render();
+    }
 }
 
 function deleteTask(id) {
@@ -185,16 +189,20 @@ function handleSubKey(e, id) {
 
 function toggleSub(id, i) {
     const t = tasks.find(t => t.id === id);
-    t.subtasks[i].done = !t.subtasks[i].done;
-    save();
-    render();
+    if (t && t.subtasks[i]) {
+        t.subtasks[i].done = !t.subtasks[i].done;
+        save();
+        render();
+    }
 }
 
 function deleteSub(id, i) {
     const t = tasks.find(t => t.id === id);
-    t.subtasks.splice(i, 1);
-    save();
-    render();
+    if (t) {
+        t.subtasks.splice(i, 1);
+        save();
+        render();
+    }
 }
 
 function clearDone() {
@@ -207,6 +215,7 @@ function clearDone() {
 // ================= EDITAR =================
 function editTask(id) {
     const t = tasks.find(t => t.id === id);
+    if (!t) return;
     editingId = id;
 
     editText.value = t.text;
@@ -223,7 +232,7 @@ saveEditBtn.onclick = () => {
     t.text = editText.value.trim();
     t.dueDate = editDate.value;
     t.priority = editPriority.value;
-    t.notified = false;
+    t.notified = false; // Permite nova notificação se a data mudou para hoje
 
     editModal.classList.remove("show");
     save();
@@ -231,6 +240,11 @@ saveEditBtn.onclick = () => {
 };
 
 cancelEditBtn.onclick = () => editModal.classList.remove("show");
+
+// Fechar modal ao clicar fora
+editModal.onclick = (e) => {
+    if (e.target === editModal) editModal.classList.remove("show");
+};
 
 // ================= NOVA TAREFA =================
 form.onsubmit = e => {
@@ -275,6 +289,7 @@ themeToggle.onclick = () => {
     localStorage.setItem("theme", isDark ? "dark" : "light");
 };
 
+// Carregar tema salvo
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
     themeToggle.textContent = "☀️";
