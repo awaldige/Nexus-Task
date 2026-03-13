@@ -107,10 +107,6 @@ header {
     transition: 0.2s;
 }
 
-.controls button:hover {
-    background: #eee;
-}
-
 /* ===== KANBAN (GRID) ===== */
 .kanban {
     display: grid;
@@ -134,7 +130,7 @@ header {
     border-bottom: 2px solid rgba(0,0,0,0.05);
 }
 
-/* ===== ITENS DA TAREFA ===== */
+/* ===== ITENS DA TAREFA (COM BOTÃO DE CONCLUIR) ===== */
 ul {
     list-style: none;
     padding: 0;
@@ -146,6 +142,9 @@ ul {
     border-radius: 12px;
     margin-bottom: 12px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     transition: 0.2s;
     border-left: 4px solid transparent;
 }
@@ -155,14 +154,54 @@ ul {
     box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
+/* Botão Circular de Check */
+.btn-complete {
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    transition: 0.2s;
+    color: transparent;
+    font-weight: bold;
+}
+
+.btn-complete:hover {
+    background: rgba(76, 175, 80, 0.1);
+}
+
+/* Estilo para Tarefa Concluída */
 .task-item.done {
     opacity: 0.6;
+}
+
+.task-item.done .btn-complete {
+    background: var(--primary);
+    color: white;
+}
+
+.task-item.done .task-text {
+    text-decoration: line-through;
+}
+
+.task-content {
+    flex: 1;
 }
 
 .task-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 5px;
+}
+
+.task-text {
+    font-weight: 500;
 }
 
 /* ===== BADGES E PRIORIDADES ===== */
@@ -195,7 +234,7 @@ ul {
     100% { opacity: 1; }
 }
 
-/* ===== AÇÕES ===== */
+/* ===== AÇÕES (EDITAR/EXCLUIR) ===== */
 .task-actions button {
     border: none;
     background: none;
@@ -260,21 +299,19 @@ ul {
 .dark .modal-box { background: var(--card-dark); color: white; }
 .dark .controls { background: rgba(255,255,255,0.05); }
 .dark .overdue { background: #3a1f1f; }
+.dark .controls button { color: white; border-color: #444; }
 
 /* ===== RESPONSIVIDADE ===== */
 
-/* Tablets */
 @media (max-width: 768px) {
     .kanban {
         grid-template-columns: 1fr;
     }
-    
     .column {
         min-height: auto;
     }
 }
 
-/* Smartphones */
 @media (max-width: 480px) {
     header h1 { font-size: 1.5rem; }
 
