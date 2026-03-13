@@ -130,14 +130,13 @@ header {
     border-bottom: 2px solid rgba(0,0,0,0.05);
 }
 
-/* ===== ITENS DA TAREFA (COM BOTÃO DE CONCLUIR) ===== */
+/* ===== ITENS DA TAREFA COLORIDOS ===== */
 ul {
     list-style: none;
     padding: 0;
 }
 
 .task-item {
-    background: var(--card-light);
     padding: 15px;
     border-radius: 12px;
     margin-bottom: 12px;
@@ -146,8 +145,14 @@ ul {
     align-items: flex-start;
     gap: 12px;
     transition: 0.2s;
-    border-left: 4px solid transparent;
+    border-left: 6px solid transparent;
+    background: var(--card-light); /* Fallback */
 }
+
+/* Cores de Fundo por Prioridade */
+.task-item.alta { background: #fff5f5; border-color: var(--danger); }
+.task-item.media { background: #fff9f0; border-color: var(--warning); }
+.task-item.baixa { background: #f5fff5; border-color: var(--primary); }
 
 .task-item:hover {
     transform: translateY(-3px);
@@ -159,8 +164,8 @@ ul {
     min-width: 24px;
     height: 24px;
     border-radius: 50%;
-    border: 2px solid var(--primary);
-    background: none;
+    border: 2px solid rgba(0,0,0,0.2);
+    background: white;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -172,17 +177,20 @@ ul {
 }
 
 .btn-complete:hover {
-    background: rgba(76, 175, 80, 0.1);
+    border-color: var(--primary);
 }
 
 /* Estilo para Tarefa Concluída */
 .task-item.done {
     opacity: 0.6;
+    background: #f0f0f0 !important;
+    border-color: #bbb !important;
 }
 
 .task-item.done .btn-complete {
     background: var(--primary);
     color: white;
+    border-color: var(--primary);
 }
 
 .task-item.done .task-text {
@@ -214,9 +222,9 @@ ul {
     color: white;
 }
 
-.alta { background: var(--danger); }
-.media { background: var(--warning); }
-.baixa { background: var(--primary); }
+.alta .badge { background: var(--danger); }
+.media .badge { background: var(--warning); }
+.baixa .badge { background: var(--primary); }
 
 .late-badge {
     background: var(--danger);
@@ -288,58 +296,36 @@ ul {
     margin-top: 10px;
 }
 
-/* ===== DARK MODE OVERRIDES ===== */
+/* ===== DARK MODE OVERRIDES (CORES VIBRANTES) ===== */
 .dark {
     background: var(--bg-dark);
     color: var(--text-dark);
 }
 
 .dark .column { background: #2b2b2b; }
-.dark .task-item { background: var(--card-dark); color: white; }
+.dark .task-item { color: white; }
+.dark .task-item.alta { background: #442a2a; }
+.dark .task-item.media { background: #443a2a; }
+.dark .task-item.baixa { background: #2a442a; }
+.dark .task-item.done { background: #333 !important; }
+
 .dark .modal-box { background: var(--card-dark); color: white; }
 .dark .controls { background: rgba(255,255,255,0.05); }
-.dark .overdue { background: #3a1f1f; }
+.dark .overdue { border-style: dashed; }
 .dark .controls button { color: white; border-color: #444; }
 
 /* ===== RESPONSIVIDADE ===== */
 
 @media (max-width: 768px) {
-    .kanban {
-        grid-template-columns: 1fr;
-    }
-    .column {
-        min-height: auto;
-    }
+    .kanban { grid-template-columns: 1fr; }
+    .column { min-height: auto; }
 }
 
 @media (max-width: 480px) {
     header h1 { font-size: 1.5rem; }
-
-    .task-form {
-        flex-direction: column;
-    }
-
-    .task-form input, 
-    .task-form select, 
-    .task-form button {
-        width: 100%;
-        flex: none;
-    }
-
-    .controls {
-        flex-direction: column;
-        gap: 12px;
-        align-items: stretch;
-        text-align: center;
-    }
-
-    .filter-group {
-        justify-content: space-between;
-    }
-
-    .task-main {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
+    .task-form { flex-direction: column; }
+    .task-form input, .task-form select, .task-form button { width: 100%; flex: none; }
+    .controls { flex-direction: column; gap: 12px; align-items: stretch; text-align: center; }
+    .filter-group { justify-content: space-between; }
+    .task-main { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
