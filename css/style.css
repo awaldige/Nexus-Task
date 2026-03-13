@@ -1,309 +1,308 @@
-/* ===== BASE ===== */
-body{
-font-family:Arial, sans-serif;
-background:#f4f6fb;
-margin:0;
-transition:.3s;
+/* ===== VARIÁVEIS E BASE ===== */
+:root {
+    --bg-light: #f4f6fb;
+    --bg-dark: #1e1e1e;
+    --card-light: #ffffff;
+    --card-dark: #2a2a2a;
+    --primary: #4CAF50;
+    --primary-hover: #43a047;
+    --danger: #e53935;
+    --warning: #fb8c00;
+    --text-light: #333;
+    --text-dark: #f4f4f4;
 }
 
-.app{
-max-width:900px;
-margin:auto;
-padding:20px;
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-light);
+    margin: 0;
+    transition: background 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+.app {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
 /* ===== HEADER ===== */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:10px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-#themeToggle{
-font-size:20px;
-border:none;
-background:none;
-cursor:pointer;
+#themeToggle {
+    font-size: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-/* ===== FORM ===== */
-.task-form{
-display:flex;
-gap:10px;
-margin:15px 0;
-flex-wrap:wrap;
+#themeToggle:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* ===== FORMULÁRIO DE TAREFAS ===== */
+.task-form {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
 }
 
 .task-form input,
-.task-form select{
-padding:10px;
-border-radius:8px;
-border:1px solid #ccc;
-flex:1;
+.task-form select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    flex: 1;
+    font-size: 1rem;
 }
 
-.task-form button{
-background:#4CAF50;
-color:white;
-border:none;
-padding:10px 16px;
-border-radius:8px;
-cursor:pointer;
-transition:.2s;
+.task-form button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
-.task-form button:hover{
-background:#43a047;
-transform:scale(1.05);
+.task-form button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* ===== CONTROLS ===== */
-.controls{
-display:flex;
-justify-content:space-between;
-margin-bottom:15px;
+/* ===== CONTROLES E FILTROS ===== */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.03);
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 
-/* ===== KANBAN ===== */
-.kanban{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.column{
-background:#eef1f7;
-padding:15px;
-border-radius:14px;
-min-height:200px;
+.controls button {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.column h3{
-margin-top:0;
+.controls button:hover {
+    background: #eee;
 }
 
-/* ===== LISTA ===== */
-ul{
-list-style:none;
-padding:0;
+/* ===== KANBAN (GRID) ===== */
+.kanban {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
 }
 
-.task-item{
-background:white;
-padding:12px;
-border-radius:12px;
-margin-bottom:10px;
-box-shadow:0 3px 6px rgba(0,0,0,0.1);
-transition:.2s;
+.column {
+    background: #eef1f7;
+    padding: 15px;
+    border-radius: 14px;
+    min-height: 300px;
+    transition: background 0.3s;
 }
 
-.task-item:hover{
-transform:translateY(-3px);
-box-shadow:0 6px 12px rgba(0,0,0,0.15);
+.column h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
 }
 
-.task-item.done{
-opacity:0.6;
-text-decoration:line-through;
+/* ===== ITENS DA TAREFA ===== */
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-/* ===== TASK MAIN ===== */
-.task-main{
-display:flex;
-justify-content:space-between;
-align-items:center;
+.task-item {
+    background: var(--card-light);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    transition: 0.2s;
+    border-left: 4px solid transparent;
 }
 
-/* ===== BADGES ===== */
-.badge{
-padding:3px 8px;
-border-radius:6px;
-font-size:12px;
-color:white;
+.task-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-.alta{background:#e53935;}
-.media{background:#fb8c00;}
-.baixa{background:#43a047;}
-
-/* ===== ACTIONS ===== */
-.task-actions button{
-border:none;
-background:none;
-cursor:pointer;
-font-size:18px;
-transition:.2s;
+.task-item.done {
+    opacity: 0.6;
 }
 
-.task-actions button:hover{
-transform:scale(1.2);
+.task-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* ===== SUBTASKS ===== */
-.subtasks{
-margin-top:10px;
-padding:10px;
-background:#f1f3f7;
-border-radius:10px;
+/* ===== BADGES E PRIORIDADES ===== */
+.badge {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
 }
 
-.subtask-form{
-display:flex;
-gap:6px;
-margin-bottom:6px;
+.alta { background: var(--danger); }
+.media { background: var(--warning); }
+.baixa { background: var(--primary); }
+
+.late-badge {
+    background: var(--danger);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    margin-left: 5px;
+    animation: pulse 1.5s infinite;
 }
 
-.subtask-form input{
-flex:1;
-padding:6px;
-border-radius:6px;
-border:1px solid #ccc;
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
-.subtask-form button{
-background:#4CAF50;
-color:white;
-border:none;
-padding:6px 12px;
-border-radius:6px;
-cursor:pointer;
+/* ===== AÇÕES ===== */
+.task-actions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+    transition: 0.2s;
 }
 
-.subtask-item{
-display:flex;
-gap:6px;
-align-items:center;
-}
-
-.task-done{
-text-decoration:line-through;
-opacity:0.6;
+.task-actions button:hover {
+    transform: scale(1.2);
 }
 
 /* ===== MODAL ===== */
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.5);
-display:none;
-align-items:center;
-justify-content:center;
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
 }
 
-.modal.show{
-display:flex;
+.modal.show {
+    display: flex;
 }
 
-.modal-box{
-background:white;
-padding:25px;
-border-radius:14px;
-width:320px;
-display:flex;
-flex-direction:column;
-gap:12px;
-animation:pop .2s ease;
+.modal-box {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: pop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes pop{
-from{transform:scale(.9);opacity:0}
-to{transform:scale(1);opacity:1}
+@keyframes pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-.modal-box input,
-.modal-box select{
-padding:10px;
-border-radius:8px;
-border:1px solid #ccc;
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
-.modal-actions{
-display:flex;
-gap:10px;
-justify-content:flex-end;
+/* ===== DARK MODE OVERRIDES ===== */
+.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
 }
 
-.modal-actions button{
-padding:8px 14px;
-border:none;
-border-radius:8px;
-cursor:pointer;
+.dark .column { background: #2b2b2b; }
+.dark .task-item { background: var(--card-dark); color: white; }
+.dark .modal-box { background: var(--card-dark); color: white; }
+.dark .controls { background: rgba(255,255,255,0.05); }
+.dark .overdue { background: #3a1f1f; }
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .kanban {
+        grid-template-columns: 1fr;
+    }
+    
+    .column {
+        min-height: auto;
+    }
 }
 
-#saveEdit{
-background:#4CAF50;
-color:white;
-}
+/* Smartphones */
+@media (max-width: 480px) {
+    header h1 { font-size: 1.5rem; }
 
-#cancelEdit{
-background:#ddd;
-}
+    .task-form {
+        flex-direction: column;
+    }
 
-/* ===== DARK MODE ===== */
-.dark{
-background:#1e1e1e;
-color:white;
-}
+    .task-form input, 
+    .task-form select, 
+    .task-form button {
+        width: 100%;
+        flex: none;
+    }
 
-.dark .column{
-background:#2b2b2b;
-}
+    .controls {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+        text-align: center;
+    }
 
-.dark .task-item{
-background:#2a2a2a;
-color:white;
-}
+    .filter-group {
+        justify-content: space-between;
+    }
 
-.dark .subtasks{
-background:#333;
+    .task-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
 }
-
-.dark .modal-box{
-background:#2a2a2a;
-color:white;
-}
-.progress{
-height:8px;
-background:#ddd;
-border-radius:10px;
-margin:6px 0;
-overflow:hidden;
-}
-
-.progress-bar{
-height:100%;
-background:#4CAF50;
-transition:.3s;
-}
-
-.dark .progress{
-background:#444;
-}
-/* TAREFA ATRASADA */
-.overdue{
-border-left:6px solid #e53935;
-background:#fff5f5;
-}
-
-.dark .overdue{
-background:#3a1f1f;
-}
-
-/* BADGE ATRASADA */
-.late-badge{
-background:#e53935;
-color:white;
-padding:3px 8px;
-border-radius:6px;
-font-size:11px;
-margin-left:6px;
-animation:pulse 1.2s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:1;}
-50%{opacity:.5;}
-100%{opacity:1;}
-}
-
