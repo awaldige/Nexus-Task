@@ -37,8 +37,10 @@ barra de progresso automática
 ## 📸 Screenshots
 
 
-<img width="235" height="112" alt="Captura de tela 2026-04-02 112229" src="https://github.com/user-attachments/assets/351e541d-63c8-4970-a5b5-c6824c153b53" />
-<img width="235" height="111" alt="Captura de tela 2026-04-02 112215" src="https://github.com/user-attachments/assets/cc0f9c85-d51d-4d07-82b6-077db3c31d85" />
+<img width="1349" height="642" alt="Captura de tela 2026-04-02 113213" src="https://github.com/user-attachments/assets/d95534bf-24f7-4a45-bae8-4010cfd65522" />
+<img width="1352" height="638" alt="Captura de tela 2026-04-02 113122" src="https://github.com/user-attachments/assets/68c7c0a4-3617-4fa0-9742-8b57510016f6" />
+
+
 
 
 
