@@ -36,8 +36,11 @@ barra de progresso automática
 
 ## 📸 Screenshots
 
-![IMG_1991](https://github.com/user-attachments/assets/6ce58322-8201-49f5-bf1b-020897b58659)
-![IMG_1992](https://github.com/user-attachments/assets/5f9da842-6a8e-40c5-a70f-d8cbf7bfadb0)
+
+<img width="235" height="112" alt="Captura de tela 2026-04-02 112229" src="https://github.com/user-attachments/assets/351e541d-63c8-4970-a5b5-c6824c153b53" />
+<img width="235" height="111" alt="Captura de tela 2026-04-02 112215" src="https://github.com/user-attachments/assets/cc0f9c85-d51d-4d07-82b6-077db3c31d85" />
+
+
 
 
 🛠 Tecnologias Utilizadas
