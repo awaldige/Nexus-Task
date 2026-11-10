@@ -61,12 +61,11 @@ A ferramenta permite organizar atividades, acompanhar prazos, definir prioridade
 | LocalStorage | Armazenamento local dos dados |
 
 ## 📸 Screenshots
+ Interface do projeto
 
-### Interface do projeto
+<img width="1366" height="767" alt="nexus-task" src="https://github.com/user-attachments/assets/f0d88401-bf22-4178-82fc-774dd6fd5a52" />
 
-![Nexus Task - Tema escuro](https://github.com/user-attachments/assets/52eb07e7-f2c8-4906-8861-9f51fb1fe408)
-
-![Nexus Task - Interface](https://github.com/user-attachments/assets/ccf51dd4-6554-4207-af2d-004094fba978)
+<img width="1361" height="764" alt="nexus" src="https://github.com/user-attachments/assets/50e28ba8-c37d-4ab7-aadf-2aa82991f6ad" />
 
 ## 📂 Estrutura do projeto
 
