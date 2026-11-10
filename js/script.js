@@ -1,10 +1,10 @@
-﻿
+
 "use strict";
 
 /* =========================================================
    NEXUS TASK 2.0
    Gerenciador de tarefas com LocalStorage
-   Compatibilidade com dados da versÃ£o anterior
+   Compatibilidade com dados da versão anterior
 ========================================================= */
 
 /* ================= ELEMENTOS ================= */
@@ -12,7 +12,7 @@
 const $ = (id) => document.getElementById(id);
 
 const elements = {
-    // NavegaÃ§Ã£o
+    // Navegação
     dashboardView: $("dashboardView"),
     tasksView: $("tasksView"),
     calendarView: $("calendarView"),
@@ -47,7 +47,7 @@ const elements = {
     closeTaskModal: $("closeTaskModal"),
     cancelTaskModal: $("cancelTaskModal"),
 
-    // Modal de ediÃ§Ã£o
+    // Modal de edição
     editModal: $("editModal"),
     editText: $("editText"),
     editDescription: $("editDescription"),
@@ -80,19 +80,19 @@ const elements = {
     progressCount: $("progressCount"),
     doneCount: $("doneCount"),
 
-    // CalendÃ¡rio
+    // Calendário
     previousMonth: $("previousMonth"),
     nextMonth: $("nextMonth"),
     calendarMonth: $("calendarMonth"),
     calendarGrid: $("calendarGrid"),
 
-    // RelatÃ³rios
+    // Relatórios
     reportTotal: $("reportTotal"),
     reportDone: $("reportDone"),
     reportProgress: $("reportProgress"),
     reportOverdue: $("reportOverdue"),
 
-    // NotificaÃ§Ãµes
+    // Notificações
     notificationToggle: $("notificationToggle"),
     notificationDot: $("notificationDot"),
     notificationPanel: $("notificationPanel"),
@@ -109,7 +109,7 @@ const elements = {
     toastContainer: $("toastContainer")
 };
 
-/* ================= CONFIGURAÃ‡Ã•ES ================= */
+/* ================= CONFIGURAÇÕES ================= */
 
 const STORAGE_KEY = "tasks";
 const THEME_KEY = "theme";
@@ -142,7 +142,7 @@ let calendarDate = new Date();
 let notificationItems = [];
 let draggedTaskId = null;
 
-/* ================= UTILITÃRIOS ================= */
+/* ================= UTILITÁRIOS ================= */
 
 function generateId() {
     if (window.crypto && window.crypto.randomUUID) {
@@ -311,7 +311,7 @@ function save() {
         console.error("Erro ao salvar tarefas:", error);
 
         showToast(
-            "NÃ£o foi possÃ­vel salvar os dados.",
+            "Não foi possível salvar os dados.",
             "error"
         );
 
@@ -319,7 +319,7 @@ function save() {
     }
 }
 
-/* ================= NOTIFICAÃ‡Ã•ES TOAST ================= */
+/* ================= NOTIFICAÇÕES TOAST ================= */
 
 function showToast(message, type = "success") {
     if (!elements.toastContainer) {
@@ -398,11 +398,11 @@ function createTaskCard(task) {
         card.classList.add("overdue");
     }
 
-    // BotÃ£o de conclusÃ£o
+    // Botão de conclusão
     const completeButton = createButton(
-        task.status === "done" ? "âœ“" : "",
+        task.status === "done" ? "✓" : "",
         "btn-complete",
-        "Alterar conclusÃ£o",
+        "Alterar conclusão",
         () => toggleTask(task.id)
     );
 
@@ -445,7 +445,7 @@ function createTaskCard(task) {
     const date = createElement(
         "small",
         "",
-        `ðŸ“… ${formatDate(task.dueDate)}`
+        `📅 ${formatDate(task.dueDate)}`
     );
 
     details.append(
@@ -476,12 +476,12 @@ function createTaskCard(task) {
 
     info.appendChild(details);
 
-    // AÃ§Ãµes
+    // Ações
     const actions = createElement("div", "task-actions");
 
     actions.appendChild(
         createButton(
-            "âœï¸",
+            "✏️",
             "",
             "Editar tarefa",
             () => editTask(task.id)
@@ -490,7 +490,7 @@ function createTaskCard(task) {
 
     actions.appendChild(
         createButton(
-            "ðŸ—‘ï¸",
+            "🗑️",
             "",
             "Excluir tarefa",
             () => deleteTask(task.id)
@@ -523,7 +523,7 @@ function createTaskCard(task) {
             createElement(
                 "small",
                 "",
-                `${progress}% concluÃ­do`
+                `${progress}% concluído`
             )
         );
     }
@@ -593,7 +593,7 @@ function createTaskCard(task) {
         );
 
         const removeButton = createButton(
-            "Ã—",
+            "×",
             "del-sub",
             "Excluir subtarefa",
             () => deleteSub(task.id, index)
@@ -689,7 +689,7 @@ function getFilteredTasks() {
         });
 }
 
-/* ================= RENDERIZAÃ‡ÃƒO ================= */
+/* ================= RENDERIZAÇÃO ================= */
 
 function render() {
     const lists = [
@@ -709,7 +709,7 @@ function render() {
 
     filtered.forEach(task => {
 
-        // Cada coluna recebe seu prÃ³prio card.
+        // Cada coluna recebe seu próprio card.
         // Isso preserva os eventos e os listeners.
         if (
             task.status === "pending" &&
@@ -847,7 +847,7 @@ function updateCounter() {
 
     setText(
         elements.counter,
-        `${pending} pendentes | ${done} concluÃ­das`
+        `${pending} pendentes | ${done} concluídas`
     );
 }
 
@@ -871,7 +871,7 @@ function addTask(event) {
 
     if (!isValidDateString(dueDate)) {
         showToast(
-            "Informe uma data vÃ¡lida.",
+            "Informe uma data válida.",
             "error"
         );
 
@@ -927,7 +927,7 @@ function toggleTask(id) {
 
     showToast(
         task.done
-            ? "Tarefa concluÃ­da!"
+            ? "Tarefa concluída!"
             : "Tarefa voltou para pendentes."
     );
 }
@@ -976,7 +976,7 @@ function deleteTask(id) {
 
     render();
 
-    showToast("Tarefa excluÃ­da.");
+    showToast("Tarefa excluída.");
 }
 
 /* ================= SUBTAREFAS ================= */
@@ -1099,7 +1099,7 @@ function saveEdit() {
 
     if (!text) {
         showToast(
-            "O tÃ­tulo da tarefa Ã© obrigatÃ³rio.",
+            "O título da tarefa é obrigatório.",
             "error"
         );
 
@@ -1110,7 +1110,7 @@ function saveEdit() {
 
     if (!isValidDateString(dueDate)) {
         showToast(
-            "Informe uma data vÃ¡lida.",
+            "Informe uma data válida.",
             "error"
         );
 
@@ -1121,7 +1121,7 @@ function saveEdit() {
 
     if (!VALID_STATUSES.includes(status)) {
         showToast(
-            "Selecione um status vÃ¡lido.",
+            "Selecione um status válido.",
             "error"
         );
 
@@ -1199,7 +1199,7 @@ function closeTaskModal() {
     elements.taskModal?.classList.remove("show");
 }
 
-/* ================= LIMPAR CONCLUÃDAS ================= */
+/* ================= LIMPAR CONCLUÍDAS ================= */
 
 function clearDone() {
     const completed = tasks.filter(
@@ -1207,12 +1207,12 @@ function clearDone() {
     );
 
     if (!completed.length) {
-        showToast("NÃ£o existem tarefas concluÃ­das.");
+        showToast("Não existem tarefas concluídas.");
         return;
     }
 
     if (!confirm(
-        `Excluir ${completed.length} tarefa(s) concluÃ­da(s)?`
+        `Excluir ${completed.length} tarefa(s) concluída(s)?`
     )) {
         return;
     }
@@ -1231,10 +1231,10 @@ function clearDone() {
 
     render();
 
-    showToast("Tarefas concluÃ­das removidas.");
+    showToast("Tarefas concluídas removidas.");
 }
 
-/* ================= NAVEGAÃ‡ÃƒO ================= */
+/* ================= NAVEGAÇÃO ================= */
 
 function navigate(viewName) {
     const views = {
@@ -1258,8 +1258,8 @@ function navigate(viewName) {
     const titles = {
         dashboard: "Dashboard",
         tasks: "Minhas tarefas",
-        calendar: "CalendÃ¡rio",
-        reports: "RelatÃ³rios"
+        calendar: "Calendário",
+        reports: "Relatórios"
     };
 
     setText(
@@ -1374,7 +1374,7 @@ function initializeDragAndDrop() {
     });
 }
 
-/* ================= CALENDÃRIO ================= */
+/* ================= CALENDÁRIO ================= */
 
 function updateCalendar() {
     if (!elements.calendarGrid) return;
@@ -1411,7 +1411,7 @@ function updateCalendar() {
         "Qua",
         "Qui",
         "Sex",
-        "SÃ¡b"
+        "Sáb"
     ];
 
     weekdays.forEach(day => {
@@ -1477,7 +1477,7 @@ function updateCalendar() {
         cell.addEventListener("click", () => {
             if (dayTasks.length) {
                 const names = dayTasks
-                    .map(task => `â€¢ ${task.text}`)
+                    .map(task => `• ${task.text}`)
                     .join("\n");
 
                 alert(
@@ -1485,7 +1485,7 @@ function updateCalendar() {
                 );
 
             } else {
-                // A data Ã© definida depois do reset do formulÃ¡rio.
+                // A data é definida depois do reset do formulário.
                 openTaskModal("pending", dateString);
             }
         });
@@ -1515,7 +1515,7 @@ function changeCalendarMonth(amount) {
     updateCalendar();
 }
 
-/* ================= RELATÃ“RIOS ================= */
+/* ================= RELATÓRIOS ================= */
 
 function updateReports() {
     setText(
@@ -1539,7 +1539,7 @@ function updateReports() {
     );
 }
 
-/* ================= NOTIFICAÃ‡Ã•ES ================= */
+/* ================= NOTIFICAÇÕES ================= */
 
 function updateNotifications() {
     const today = getLocalDate();
@@ -1564,7 +1564,7 @@ function updateNotifications() {
             createElement(
                 "p",
                 "empty-notifications",
-                "Nenhuma notificaÃ§Ã£o."
+                "Nenhuma notificação."
             )
         );
 
@@ -1651,7 +1651,7 @@ function exportTasks() {
         link.click();
         link.remove();
 
-        // DÃ¡ tempo para o navegador iniciar o download.
+        // Dá tempo para o navegador iniciar o download.
         setTimeout(() => {
             URL.revokeObjectURL(url);
         }, 1000);
@@ -1662,7 +1662,7 @@ function exportTasks() {
         console.error("Erro ao exportar backup:", error);
 
         showToast(
-            "NÃ£o foi possÃ­vel exportar o backup.",
+            "Não foi possível exportar o backup.",
             "error"
         );
     }
@@ -1677,7 +1677,7 @@ function importTasks(event) {
 
     if (!file.name.toLowerCase().endsWith(".json")) {
         showToast(
-            "Selecione um arquivo JSON vÃ¡lido.",
+            "Selecione um arquivo JSON válido.",
             "error"
         );
 
@@ -1706,7 +1706,7 @@ function importTasks(event) {
                 : data?.tasks;
 
             if (!Array.isArray(imported)) {
-                throw new Error("Formato de backup invÃ¡lido.");
+                throw new Error("Formato de backup inválido.");
             }
 
             if (
@@ -1716,7 +1716,7 @@ function importTasks(event) {
                     Array.isArray(task)
                 )
             ) {
-                throw new Error("Existem tarefas invÃ¡lidas no arquivo.");
+                throw new Error("Existem tarefas inválidas no arquivo.");
             }
 
             const normalizedTasks = imported
@@ -1725,12 +1725,12 @@ function importTasks(event) {
 
             if (normalizedTasks.length !== imported.length) {
                 throw new Error(
-                    "O arquivo contÃ©m tarefas sem tÃ­tulo vÃ¡lido."
+                    "O arquivo contém tarefas sem título válido."
                 );
             }
 
             if (!confirm(
-                `O backup contÃ©m ${normalizedTasks.length} tarefa(s).\n\nDeseja substituir suas tarefas atuais?`
+                `O backup contém ${normalizedTasks.length} tarefa(s).\n\nDeseja substituir suas tarefas atuais?`
             )) {
                 return;
             }
@@ -1756,7 +1756,7 @@ function importTasks(event) {
             );
 
             showToast(
-                "NÃ£o foi possÃ­vel importar esse arquivo.",
+                "Não foi possível importar esse arquivo.",
                 "error"
             );
 
@@ -1789,7 +1789,7 @@ function applyTheme(theme) {
 
     if (elements.themeToggle) {
         elements.themeToggle.textContent =
-            dark ? "â˜€ï¸" : "ðŸŒ™";
+            dark ? "☀️" : "🌙";
     }
 
     try {
@@ -1920,7 +1920,7 @@ function initializeEvents() {
         importTasks
     );
 
-    // NavegaÃ§Ã£o e aÃ§Ãµes por delegaÃ§Ã£o de eventos.
+    // Navegação e ações por delegação de eventos.
     document.addEventListener("click", event => {
         const target = event.target;
 
@@ -1979,10 +1979,10 @@ function initializeEvents() {
     });
 }
 
-/* ================= INICIALIZAÃ‡ÃƒO ================= */
+/* ================= INICIALIZAÇÃO ================= */
 
 function initialize() {
-    // Persiste a migraÃ§Ã£o do formato antigo.
+    // Persiste a migração do formato antigo.
     save();
 
     let savedTheme = "light";

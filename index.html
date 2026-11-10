@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="theme-color" content="#0b1220">
-    <meta name="description" content="Nexus Task â€” Organize tarefas, acompanhe prazos e aumente sua produtividade.">
+    <meta name="description" content="Nexus Task — Organize tarefas, acompanhe prazos e aumente sua produtividade.">
 
-    <title>Nexus Task 2.0 | GestÃ£o Inteligente de Tarefas</title>
+    <title>Nexus Task 2.0 | Gestão Inteligente de Tarefas</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ðŸš€</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,30 +34,30 @@
 
         <div class="sidebar-label">MENU PRINCIPAL</div>
 
-        <nav class="main-nav" aria-label="NavegaÃ§Ã£o principal">
+        <nav class="main-nav" aria-label="Navegação principal">
             <button class="nav-item active" data-view="dashboard">
-                <span class="nav-icon">â–¦</span>
+                <span class="nav-icon">▦</span>
                 <span>Dashboard</span>
             </button>
 
             <button class="nav-item" data-view="tasks">
-                <span class="nav-icon">â˜·</span>
+                <span class="nav-icon">☷</span>
                 <span>Minhas tarefas</span>
                 <span class="nav-count" id="sidebarTaskCount">0</span>
             </button>
 
             <button class="nav-item" data-view="calendar">
-                <span class="nav-icon">â–£</span>
-                <span>CalendÃ¡rio</span>
+                <span class="nav-icon">▣</span>
+                <span>Calendário</span>
             </button>
 
             <button class="nav-item" data-view="reports">
-                <span class="nav-icon">â–¥</span>
-                <span>RelatÃ³rios</span>
+                <span class="nav-icon">▥</span>
+                <span>Relatórios</span>
             </button>
         </nav>
 
-        <div class="sidebar-label category-label">ORGANIZAÃ‡ÃƒO</div>
+        <div class="sidebar-label category-label">ORGANIZAÇÃO</div>
 
         <div class="category-list">
             <button class="category-item" data-category="Trabalho">
@@ -84,7 +84,7 @@
         <div class="sidebar-bottom">
 
             <div class="sidebar-tip">
-                <span class="tip-icon">âœ¦</span>
+                <span class="tip-icon">✦</span>
                 <strong>Mantenha o foco!</strong>
                 <p>Pequenos passos levam a grandes resultados.</p>
             </div>
@@ -101,7 +101,7 @@
 
     </aside>
 
-    <!-- CONTEÃšDO PRINCIPAL -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="main-content">
 
         <!-- TOPBAR -->
@@ -109,7 +109,7 @@
 
             <div class="topbar-left">
                 <button id="menuToggle" class="icon-button mobile-menu" aria-label="Abrir menu">
-                    â˜°
+                    ☰
                 </button>
 
                 <div class="breadcrumb">
@@ -122,22 +122,22 @@
             <div class="topbar-actions">
 
                 <div class="search-box">
-                    <span>âŒ•</span>
+                    <span>⌕</span>
                     <input
                         type="search"
                         id="searchInput"
                         placeholder="Buscar tarefas..."
                         aria-label="Buscar tarefas"
                     >
-                    <kbd>âŒ˜ K</kbd>
+                    <kbd>⌘ K</kbd>
                 </div>
 
                 <button id="themeToggle" class="icon-button" aria-label="Alternar tema" title="Alternar tema">
-                    â˜¾
+                    ☾
                 </button>
 
-                <button id="notificationToggle" class="icon-button notification-button" aria-label="NotificaÃ§Ãµes" title="NotificaÃ§Ãµes">
-                    â™§
+                <button id="notificationToggle" class="icon-button notification-button" aria-label="Notificações" title="Notificações">
+                    ♧
                     <span class="notification-dot" id="notificationDot"></span>
                 </button>
 
@@ -152,8 +152,8 @@
 
                 <div class="welcome-section">
                     <div>
-                        <span class="eyebrow">SEU ESPAÃ‡O DE PRODUTIVIDADE</span>
-                        <h1>OlÃ¡! Vamos organizar seu dia? <span>âœ¦</span></h1>
+                        <span class="eyebrow">SEU ESPAÇO DE PRODUTIVIDADE</span>
+                        <h1>Olá! Vamos organizar seu dia? <span>✦</span></h1>
                         <p>Acompanhe suas atividades e mantenha tudo em movimento.</p>
                     </div>
 
@@ -169,7 +169,7 @@
                     <article class="stat-card">
                         <div class="stat-top">
                             <span>Total de tarefas</span>
-                            <span class="stat-icon blue-bg">â–¤</span>
+                            <span class="stat-icon blue-bg">▤</span>
                         </div>
                         <strong id="totalTasks">0</strong>
                         <small>Tarefas cadastradas</small>
@@ -178,25 +178,25 @@
                     <article class="stat-card">
                         <div class="stat-top">
                             <span>A fazer</span>
-                            <span class="stat-icon orange-bg">â—·</span>
+                            <span class="stat-icon orange-bg">◷</span>
                         </div>
                         <strong id="pendingTasks">0</strong>
-                        <small>Aguardando execuÃ§Ã£o</small>
+                        <small>Aguardando execução</small>
                     </article>
 
                     <article class="stat-card">
                         <div class="stat-top">
                             <span>Em andamento</span>
-                            <span class="stat-icon purple-bg">â†—</span>
+                            <span class="stat-icon purple-bg">↗</span>
                         </div>
                         <strong id="progressTasks">0</strong>
-                        <small>Em execuÃ§Ã£o</small>
+                        <small>Em execução</small>
                     </article>
 
                     <article class="stat-card">
                         <div class="stat-top">
-                            <span>ConcluÃ­das</span>
-                            <span class="stat-icon green-bg">âœ“</span>
+                            <span>Concluídas</span>
+                            <span class="stat-icon green-bg">✓</span>
                         </div>
                         <strong id="completedTasks">0</strong>
                         <small>Finalizadas</small>
@@ -211,9 +211,9 @@
                         <div class="panel-heading">
                             <div>
                                 <span class="panel-eyebrow">DESEMPENHO</span>
-                                <h2>VisÃ£o geral</h2>
+                                <h2>Visão geral</h2>
                             </div>
-                            <span class="panel-icon">â—‰</span>
+                            <span class="panel-icon">◉</span>
                         </div>
 
                         <div class="productivity-content">
@@ -221,14 +221,14 @@
                             <div class="progress-ring" id="progressRing" style="--progress: 0%">
                                 <div class="progress-ring-inner">
                                     <strong id="completionRate">0%</strong>
-                                    <small>ConcluÃ­do</small>
+                                    <small>Concluído</small>
                                 </div>
                             </div>
 
                             <div class="productivity-details">
                                 <div class="legend-item">
                                     <span class="legend-dot green"></span>
-                                    <span>ConcluÃ­das</span>
+                                    <span>Concluídas</span>
                                     <strong id="overviewDone">0</strong>
                                 </div>
 
@@ -251,10 +251,10 @@
                     <article class="panel attention-panel">
                         <div class="panel-heading">
                             <div>
-                                <span class="panel-eyebrow">ATENÃ‡ÃƒO</span>
+                                <span class="panel-eyebrow">ATENÇÃO</span>
                                 <h2>Prazos importantes</h2>
                             </div>
-                            <span class="panel-icon warning-icon">â—·</span>
+                            <span class="panel-icon warning-icon">◷</span>
                         </div>
 
                         <div class="deadline-summary">
@@ -269,7 +269,7 @@
                             </div>
                         </div>
 
-                        <p class="panel-description">Acompanhe seus prazos para nÃ£o perder nenhuma entrega.</p>
+                        <p class="panel-description">Acompanhe seus prazos para não perder nenhuma entrega.</p>
                     </article>
 
                 </section>
@@ -288,11 +288,11 @@
                                 <option value="all">Todas as tarefas</option>
                                 <option value="pending">Pendentes</option>
                                 <option value="progress">Em andamento</option>
-                                <option value="done">ConcluÃ­das</option>
+                                <option value="done">Concluídas</option>
                             </select>
 
                             <button id="openTaskModal" class="primary-button">
-                                <span>ï¼‹</span> Nova tarefa
+                                <span>＋</span> Nova tarefa
                             </button>
                         </div>
                     </div>
@@ -308,7 +308,7 @@
                                 </div>
                             </div>
                             <ul id="taskList" class="task-list"></ul>
-                            <button class="add-task-inline" data-add-status="pending">ï¼‹ Adicionar tarefa</button>
+                            <button class="add-task-inline" data-add-status="pending">＋ Adicionar tarefa</button>
                         </section>
 
                         <section class="kanban-column" data-status="progress">
@@ -320,26 +320,26 @@
                                 </div>
                             </div>
                             <ul id="progressList" class="task-list"></ul>
-                            <button class="add-task-inline" data-add-status="progress">ï¼‹ Adicionar tarefa</button>
+                            <button class="add-task-inline" data-add-status="progress">＋ Adicionar tarefa</button>
                         </section>
 
                         <section class="kanban-column" data-status="done">
                             <div class="column-heading">
                                 <div>
                                     <span class="column-dot green"></span>
-                                    <h3>ConcluÃ­das</h3>
+                                    <h3>Concluídas</h3>
                                     <span class="column-count" id="doneCount">0</span>
                                 </div>
                             </div>
                             <ul id="doneList" class="task-list"></ul>
-                            <button class="add-task-inline" data-add-status="done">ï¼‹ Adicionar tarefa</button>
+                            <button class="add-task-inline" data-add-status="done">＋ Adicionar tarefa</button>
                         </section>
 
                     </div>
 
                     <div class="board-footer">
                         <span id="counter" role="status" aria-live="polite">Tarefas: 0</span>
-                        <button id="clearDone" class="text-button">Limpar concluÃ­das</button>
+                        <button id="clearDone" class="text-button">Limpar concluídas</button>
                     </div>
 
                 </section>
@@ -357,36 +357,36 @@
                 <div class="panel task-list-panel">
                     <div class="panel-heading">
                         <h2>Lista de tarefas</h2>
-                        <button class="primary-button" data-open-task>ï¼‹ Nova tarefa</button>
+                        <button class="primary-button" data-open-task>＋ Nova tarefa</button>
                     </div>
                     <ul id="allTasksList" class="all-tasks-list"></ul>
                 </div>
             </section>
 
-            <!-- CALENDÃRIO -->
+            <!-- CALENDÁRIO -->
             <section class="page-section" id="calendarView">
                 <div class="page-heading">
                     <span class="eyebrow">PLANEJAMENTO</span>
-                    <h1>CalendÃ¡rio</h1>
+                    <h1>Calendário</h1>
                     <p>Consulte suas tarefas organizadas por data de entrega.</p>
                 </div>
 
                 <div class="panel calendar-panel">
                     <div class="calendar-toolbar">
-                        <button id="previousMonth" class="icon-button" aria-label="MÃªs anterior">â€¹</button>
-                        <h2 id="calendarMonth">CalendÃ¡rio</h2>
-                        <button id="nextMonth" class="icon-button" aria-label="PrÃ³ximo mÃªs">â€º</button>
+                        <button id="previousMonth" class="icon-button" aria-label="Mês anterior">‹</button>
+                        <h2 id="calendarMonth">Calendário</h2>
+                        <button id="nextMonth" class="icon-button" aria-label="Próximo mês">›</button>
                     </div>
 
                     <div class="calendar-grid" id="calendarGrid"></div>
                 </div>
             </section>
 
-            <!-- RELATÃ“RIOS -->
+            <!-- RELATÓRIOS -->
             <section class="page-section" id="reportsView">
                 <div class="page-heading">
                     <span class="eyebrow">PRODUTIVIDADE</span>
-                    <h1>RelatÃ³rios</h1>
+                    <h1>Relatórios</h1>
                     <p>Analise seu desempenho e acompanhe seus resultados.</p>
                 </div>
 
@@ -396,7 +396,7 @@
                         <strong id="reportTotal">0</strong>
                     </article>
                     <article class="stat-card">
-                        <span>ConcluÃ­das</span>
+                        <span>Concluídas</span>
                         <strong id="reportDone">0</strong>
                     </article>
                     <article class="stat-card">
@@ -416,8 +416,8 @@
                     </div>
 
                     <div class="backup-actions">
-                        <button id="exportTasks" class="secondary-button">â†“ Exportar JSON</button>
-                        <button id="importTasks" class="secondary-button">â†‘ Importar JSON</button>
+                        <button id="exportTasks" class="secondary-button">↓ Exportar JSON</button>
+                        <button id="importTasks" class="secondary-button">↑ Importar JSON</button>
                         <input type="file" id="importFile" accept=".json,application/json" hidden>
                     </div>
                 </div>
@@ -426,7 +426,7 @@
         </div>
 
         <footer class="main-footer">
-            <span>Â© 2026 Nexus Task 2.0</span>
+            <span>© 2026 Nexus Task 2.0</span>
             <span>Desenvolvido por <strong>AW TECHNOLOGY</strong></span>
         </footer>
 
@@ -443,18 +443,18 @@
 
         <div class="modal-header">
             <div>
-                <span class="panel-eyebrow">ORGANIZAÃ‡ÃƒO</span>
+                <span class="panel-eyebrow">ORGANIZAÇÃO</span>
                 <h2 id="taskModalTitle">Nova tarefa</h2>
             </div>
-            <button id="closeTaskModal" class="icon-button" aria-label="Fechar">Ã—</button>
+            <button id="closeTaskModal" class="icon-button" aria-label="Fechar">×</button>
         </div>
 
         <form id="taskForm" class="task-form">
 
-            <label for="taskInput">TÃ­tulo da tarefa</label>
+            <label for="taskInput">Título da tarefa</label>
             <input type="text" id="taskInput" placeholder="Ex.: Finalizar projeto..." required maxlength="100">
 
-            <label for="taskDescription">DescriÃ§Ã£o</label>
+            <label for="taskDescription">Descrição</label>
             <textarea id="taskDescription" placeholder="Adicione detalhes sobre a atividade..." rows="3" maxlength="500"></textarea>
 
             <div class="form-row">
@@ -467,7 +467,7 @@
                     <label for="priority">Prioridade</label>
                     <select id="priority">
                         <option value="alta">Alta</option>
-                        <option value="media" selected>MÃ©dia</option>
+                        <option value="media" selected>Média</option>
                         <option value="baixa">Baixa</option>
                     </select>
                 </div>
@@ -489,7 +489,7 @@
                     <select id="taskStatus">
                         <option value="pending">A fazer</option>
                         <option value="progress">Em andamento</option>
-                        <option value="done">ConcluÃ­da</option>
+                        <option value="done">Concluída</option>
                     </select>
                 </div>
             </div>
@@ -504,22 +504,22 @@
     </div>
 </div>
 
-<!-- MODAL DE EDIÃ‡ÃƒO -->
+<!-- MODAL DE EDIÇÃO -->
 <div id="editModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box">
 
         <div class="modal-header">
             <div>
-                <span class="panel-eyebrow">EDIÃ‡ÃƒO</span>
+                <span class="panel-eyebrow">EDIÇÃO</span>
                 <h2 id="modalTitle">Editar tarefa</h2>
             </div>
-            <button id="closeEditModal" class="icon-button" aria-label="Fechar">Ã—</button>
+            <button id="closeEditModal" class="icon-button" aria-label="Fechar">×</button>
         </div>
 
-        <label for="editText">TÃ­tulo</label>
-        <input type="text" id="editText" placeholder="TÃ­tulo da tarefa" maxlength="100" required>
+        <label for="editText">Título</label>
+        <input type="text" id="editText" placeholder="Título da tarefa" maxlength="100" required>
 
-        <label for="editDescription">DescriÃ§Ã£o</label>
+        <label for="editDescription">Descrição</label>
         <textarea id="editDescription" rows="3" maxlength="500"></textarea>
 
         <div class="form-row">
@@ -532,7 +532,7 @@
                 <label for="editPriority">Prioridade</label>
                 <select id="editPriority">
                     <option value="alta">Alta</option>
-                    <option value="media">MÃ©dia</option>
+                    <option value="media">Média</option>
                     <option value="baixa">Baixa</option>
                 </select>
             </div>
@@ -554,27 +554,27 @@
                 <select id="editStatus">
                     <option value="pending">A fazer</option>
                     <option value="progress">Em andamento</option>
-                    <option value="done">ConcluÃ­da</option>
+                    <option value="done">Concluída</option>
                 </select>
             </div>
         </div>
 
         <div class="modal-actions">
             <button id="cancelEdit" class="secondary-button">Cancelar</button>
-            <button id="saveEdit" class="primary-button">Salvar alteraÃ§Ãµes</button>
+            <button id="saveEdit" class="primary-button">Salvar alterações</button>
         </div>
 
     </div>
 </div>
 
-<!-- NOTIFICAÃ‡Ã•ES -->
+<!-- NOTIFICAÇÕES -->
 <div class="notification-panel" id="notificationPanel" aria-hidden="true">
     <div class="notification-panel-header">
-        <h2>NotificaÃ§Ãµes</h2>
-        <button id="closeNotifications" class="icon-button" aria-label="Fechar">Ã—</button>
+        <h2>Notificações</h2>
+        <button id="closeNotifications" class="icon-button" aria-label="Fechar">×</button>
     </div>
     <div id="notificationList" class="notification-list">
-        <p class="empty-state">Nenhuma notificaÃ§Ã£o no momento.</p>
+        <p class="empty-state">Nenhuma notificação no momento.</p>
     </div>
 </div>
 
