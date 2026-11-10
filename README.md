@@ -1,110 +1,149 @@
-# ✅ Nexus Task — Gerenciador de Tarefas Kanban
 
-O Nexus Task é uma aplicação web de gerenciamento de tarefas desenvolvida com HTML5, CSS3 e JavaScript Vanilla.
+# 🚀 Nexus Task — Gerenciador de Tarefas
 
-A aplicação oferece uma interface para organizar atividades, acompanhar prazos e prioridades e visualizar o progresso das tarefas em um fluxo Kanban. O projeto foi desenvolvido com foco em produtividade, usabilidade e organização pessoal.
+O **Nexus Task** é uma aplicação web de gerenciamento de tarefas desenvolvida com HTML5, CSS3 e JavaScript Vanilla.
+
+A ferramenta permite organizar atividades, acompanhar prazos, definir prioridades e visualizar o andamento das tarefas em um quadro Kanban. O projeto foi desenvolvido com foco em produtividade, organização e facilidade de uso.
 
 ## 🌐 Demonstração Online
 
-## 🔗 Acesse a aplicação: https://nexus-tasker.vercel.app/
+🔗 **Acesse:** https://nexus-tasker.vercel.app/
 
-# ✨ Funcionalidades
+## ✨ Funcionalidades
 
-## 📋 Gerenciamento de Tarefas
+### 📊 Dashboard
+- Visão geral das tarefas.
+- Acompanhamento das atividades por status.
+- Indicadores de progresso.
 
-- Criação e organização de tarefas.
-- Organização visual em formato Kanban.
-- Acompanhamento do status das atividades.
-- Definição de prioridades.
-- Configuração de prazos.
-- Gerenciamento de subtarefas.
-  
-## ⏰ Prazos e Notificações
+### 📋 Gerenciamento de tarefas
+- Criar, editar e organizar tarefas.
+- Definir título e descrição.
+- Configurar prioridades e prazos.
+- Organizar tarefas por categorias.
+- Acompanhar o status das atividades.
+- Adicionar e acompanhar subtarefas.
 
-- Identificação visual de tarefas próximas do vencimento.
-- Alertas para acompanhamento de prazos, conforme implementados na aplicação.
-- Destaque para atividades que precisam de atenção.
+### 🗂️ Quadro Kanban
+- Colunas de Pendentes, Em andamento e Concluídas.
+- Movimentação de tarefas por Drag & Drop.
+- Atualização do status conforme a movimentação.
 
-## 🎨 Interface e Experiência do Usuário
+### 📅 Calendário
+- Visualização de tarefas por data.
+- Navegação entre meses.
+- Identificação de atividades agendadas.
+- Criação de tarefas a partir do calendário.
 
+### 📈 Relatórios e acompanhamento
+- Indicadores sobre as tarefas.
+- Acompanhamento do progresso.
+- Organização das atividades por status.
+
+### 💾 Armazenamento e backup
+- Persistência dos dados utilizando LocalStorage.
+- Exportação de backup em formato JSON.
+- Importação de backups para recuperação dos dados.
+
+### 🎨 Interface e experiência
 - Interface responsiva.
-- Modo escuro.
+- Tema claro e escuro.
+- Navegação entre as áreas da aplicação.
 - Interações dinâmicas com JavaScript.
-- Organização visual das informações.
-- Persistência local dos dados, conforme o funcionamento atual do projeto.
-  
+
+## 🛠️ Tecnologias utilizadas
+
+| Tecnologia | Aplicação |
+|---|---|
+| HTML5 | Estrutura da aplicação |
+| CSS3 | Estilização e responsividade |
+| JavaScript Vanilla | Lógica e interatividade |
+| LocalStorage | Armazenamento local dos dados |
 
 ## 📸 Screenshots
 
+### Interface do projeto
 
-![Captura de tela 2026-04-02 123526](https://github.com/user-attachments/assets/52eb07e7-f2c8-4906-8861-9f51fb1fe408)
-![Captura de tela 2026-04-02 115715 (1)](https://github.com/user-attachments/assets/ccf51dd4-6554-4207-af2d-004094fba978)
+![Nexus Task - Tema escuro](https://github.com/user-attachments/assets/52eb07e7-f2c8-4906-8861-9f51fb1fe408)
 
+![Nexus Task - Interface](https://github.com/user-attachments/assets/ccf51dd4-6554-4207-af2d-004094fba978)
 
-## 🛠️ Tecnologias Utilizadas
+## 📂 Estrutura do projeto
 
-- Tecnologia	Aplicação
-- HTML5	Estrutura da aplicação
-- CSS3	Estilização e responsividade
-- JavaScript Vanilla	Lógica e interatividade
-- LocalStorage	Persistência local, caso utilizada pela versão atual
-  
-## 📂 Estrutura do Projeto
-
+```text
 Nexus-Task/
+├── css/
+│   └── style.css
+├── js/
+│   ├── script.js
+│   └── script-original.js
 ├── screenshots/
+│   ├── taskpad-dark.png
+│   └── taskpad-light.png
 ├── index.html
-├── style.css
-├── script.js
 └── README.md
+```
 
-## 🚀 Como Executar Localmente
+## 🚀 Como executar localmente
 
-1. Clone o repositório
+1. Clone o repositório:
+
+```bash
 git clone https://github.com/awaldige/Nexus-Task.git
-2. Entre na pasta
+```
+
+2. Acesse a pasta:
+
+```bash
 cd Nexus-Task
-3. Execute a aplicação
+```
 
-Abra o arquivo index.html diretamente no navegador.
+3. Abra o arquivo `index.html` no navegador.
 
-Também é possível utilizar a extensão Live Server no Visual Studio Code para executar o projeto durante o desenvolvimento.
+Você também pode utilizar a extensão Live Server no Visual Studio Code para executar o projeto durante o desenvolvimento.
 
-## 🧠 Destaques Técnicos
+## 🧪 Validação e testes
 
-- Desenvolvimento frontend sem frameworks.
+A versão atual passou por testes funcionais, incluindo:
+
+- Cadastro de tarefas.
+- Edição de títulos e descrições.
+- Organização por categorias.
+- Movimentação de tarefas entre as colunas Kanban.
+- Persistência dos dados após atualizar a página.
+- Gerenciamento de subtarefas.
+
+## 🧠 Destaques técnicos
+
+- Desenvolvimento com JavaScript Vanilla, sem frameworks.
 - Manipulação dinâmica do DOM.
-- Organização visual de tarefas em formato Kanban.
-- Gerenciamento de prazos e prioridades.
-- Interações com JavaScript Vanilla.
-- Interface responsiva e modo escuro.
-- Persistência local, se confirmada no código atual.
-- Deixe uma estrela no repositório!
-- Isso ajuda muito e motiva novos projetos 😊
-- 
-## 🔮 Possíveis Melhorias Futuras
+- Organização de tarefas em quadro Kanban.
+- Implementação de Drag & Drop.
+- Persistência local com LocalStorage.
+- Importação e exportação de dados em JSON.
+- Interface com temas claro e escuro.
+
+## 🔮 Melhorias futuras
 
 - Sincronização de tarefas entre dispositivos.
 - Autenticação e perfis de usuários.
-- Banco de dados para armazenamento remoto.
+- Integração com banco de dados remoto.
 - Compartilhamento de quadros.
 - Colaboração entre usuários.
-- Exportação de tarefas e relatórios.
-- Filtros avançados por status, prazo e prioridade.
+- Recursos adicionais de produtividade.
 
- As funcionalidades desta seção representam possibilidades para futuras versões.
+## 🎯 Objetivo do projeto
 
-## 🎯 Objetivo do Projeto
-
-O Nexus Task foi desenvolvido como projeto de portfólio para demonstrar conhecimentos em desenvolvimento frontend, organização de interfaces, manipulação do DOM e construção de ferramentas de produtividade.
+O Nexus Task foi desenvolvido como projeto de portfólio para demonstrar conhecimentos em desenvolvimento frontend, manipulação do DOM, armazenamento local e criação de ferramentas interativas de produtividade.
 
 ## 👨‍💻 Autor
 
-André Waldige
+**André Waldige**
 
 Desenvolvedor Full Stack — AW TECHNOLOGY
 
-GitHub: https://github.com/awaldige
+- GitHub: https://github.com/awaldige
+- Portfólio: https://andre-waldige.vercel.app/
 
 ## 📄 Licença
 
