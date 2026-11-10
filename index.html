@@ -1,85 +1,586 @@
+﻿
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Task - Gerenciador de Tarefas</title>
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
-    
+
+    <meta name="theme-color" content="#0b1220">
+    <meta name="description" content="Nexus Task â€” Organize tarefas, acompanhe prazos e aumente sua produtividade.">
+
+    <title>Nexus Task 2.0 | GestÃ£o Inteligente de Tarefas</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ðŸš€</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <main class="app">
-        <header>
-            <h1>📝 Nexus Task</h1>
-            <button id="themeToggle" aria-label="Alternar modo escuro/claro">🌙</button>
-        </header>
+<div class="app-shell">
 
-        <section class="input-section">
-            <form id="taskForm" class="task-form">
-                <input type="text" id="taskInput" placeholder="Nova tarefa..." required autofocus maxlength="100">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
 
-                <input type="date" id="dueDate" aria-label="Data de entrega">
+        <a href="#" class="brand">
+            <span class="brand-icon">N</span>
+            <span class="brand-name">Nexus<span>Task</span></span>
+            <span class="brand-version">2.0</span>
+        </a>
 
-                <select id="priority" aria-label="Prioridade da tarefa">
-                    <option value="alta">Alta</option>
-                    <option value="media" selected>Média</option>
-                    <option value="baixa">Baixa</option>
-                </select>
+        <div class="sidebar-label">MENU PRINCIPAL</div>
 
-                <button type="submit">Adicionar</button>
-            </form>
-        </section>
+        <nav class="main-nav" aria-label="NavegaÃ§Ã£o principal">
+            <button class="nav-item active" data-view="dashboard">
+                <span class="nav-icon">â–¦</span>
+                <span>Dashboard</span>
+            </button>
 
-        <section class="controls">
-            <div class="filter-group">
-                <label for="filter">Filtrar:</label>
-                <select id="filter">
-                    <option value="all">Todas</option>
-                    <option value="pending">Pendentes</option>
-                    <option value="done">Concluídas</option>
-                </select>
+            <button class="nav-item" data-view="tasks">
+                <span class="nav-icon">â˜·</span>
+                <span>Minhas tarefas</span>
+                <span class="nav-count" id="sidebarTaskCount">0</span>
+            </button>
+
+            <button class="nav-item" data-view="calendar">
+                <span class="nav-icon">â–£</span>
+                <span>CalendÃ¡rio</span>
+            </button>
+
+            <button class="nav-item" data-view="reports">
+                <span class="nav-icon">â–¥</span>
+                <span>RelatÃ³rios</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-label category-label">ORGANIZAÃ‡ÃƒO</div>
+
+        <div class="category-list">
+            <button class="category-item" data-category="Trabalho">
+                <span class="category-dot blue"></span>
+                Trabalho
+            </button>
+
+            <button class="category-item" data-category="Pessoal">
+                <span class="category-dot purple"></span>
+                Pessoal
+            </button>
+
+            <button class="category-item" data-category="Estudos">
+                <span class="category-dot orange"></span>
+                Estudos
+            </button>
+
+            <button class="category-item" data-category="Outros">
+                <span class="category-dot green"></span>
+                Outros
+            </button>
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-tip">
+                <span class="tip-icon">âœ¦</span>
+                <strong>Mantenha o foco!</strong>
+                <p>Pequenos passos levam a grandes resultados.</p>
             </div>
-            <button onclick="clearDone()">🧹 Limpar concluídas</button>
-            <span id="counter" role="status" aria-live="polite">Tarefas: 0</span>
-        </section>
 
-        <section class="kanban" aria-label="Quadro de tarefas">
-            <div class="column">
-                <h3>⏳ Pendentes</h3>
-                <ul id="taskList" class="task-list"></ul>
-            </div>
-
-            <div class="column">
-                <h3>✅ Concluídas</h3>
-                <ul id="doneList" class="task-list"></ul>
-            </div>
-        </section>
-
-        <div id="editModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-            <div class="modal-box">
-                <h2 id="modalTitle">✏️ Editar tarefa</h2>
-
-                <input type="text" id="editText" placeholder="Título da tarefa" maxlength="100">
-                <input type="date" id="editDate">
-
-                <select id="editPriority">
-                    <option value="alta">Alta</option>
-                    <option value="media">Média</option>
-                    <option value="baixa">Baixa</option>
-                </select>
-
-                <div class="modal-actions">
-                    <button id="saveEdit" class="btn-save">Salvar Alterações</button>
-                    <button id="cancelEdit" class="btn-cancel">Cancelar</button>
+            <div class="sidebar-footer">
+                <span class="footer-avatar">AW</span>
+                <div>
+                    <strong>AW TECHNOLOGY</strong>
+                    <small>Nexus Task 2.0</small>
                 </div>
             </div>
+
         </div>
+
+    </aside>
+
+    <!-- CONTEÃšDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button id="menuToggle" class="icon-button mobile-menu" aria-label="Abrir menu">
+                    â˜°
+                </button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <strong id="breadcrumbTitle">Dashboard</strong>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="search-box">
+                    <span>âŒ•</span>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Buscar tarefas..."
+                        aria-label="Buscar tarefas"
+                    >
+                    <kbd>âŒ˜ K</kbd>
+                </div>
+
+                <button id="themeToggle" class="icon-button" aria-label="Alternar tema" title="Alternar tema">
+                    â˜¾
+                </button>
+
+                <button id="notificationToggle" class="icon-button notification-button" aria-label="NotificaÃ§Ãµes" title="NotificaÃ§Ãµes">
+                    â™§
+                    <span class="notification-dot" id="notificationDot"></span>
+                </button>
+
+            </div>
+
+        </header>
+
+        <div class="content-wrapper">
+
+            <!-- DASHBOARD -->
+            <section class="page-section active" id="dashboardView">
+
+                <div class="welcome-section">
+                    <div>
+                        <span class="eyebrow">SEU ESPAÃ‡O DE PRODUTIVIDADE</span>
+                        <h1>OlÃ¡! Vamos organizar seu dia? <span>âœ¦</span></h1>
+                        <p>Acompanhe suas atividades e mantenha tudo em movimento.</p>
+                    </div>
+
+                    <div class="welcome-date">
+                        <span id="currentDay">Hoje</span>
+                        <strong id="currentDate"></strong>
+                    </div>
+                </div>
+
+                <!-- INDICADORES -->
+                <section class="stats-grid" aria-label="Indicadores de tarefas">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Total de tarefas</span>
+                            <span class="stat-icon blue-bg">â–¤</span>
+                        </div>
+                        <strong id="totalTasks">0</strong>
+                        <small>Tarefas cadastradas</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>A fazer</span>
+                            <span class="stat-icon orange-bg">â—·</span>
+                        </div>
+                        <strong id="pendingTasks">0</strong>
+                        <small>Aguardando execuÃ§Ã£o</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Em andamento</span>
+                            <span class="stat-icon purple-bg">â†—</span>
+                        </div>
+                        <strong id="progressTasks">0</strong>
+                        <small>Em execuÃ§Ã£o</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>ConcluÃ­das</span>
+                            <span class="stat-icon green-bg">âœ“</span>
+                        </div>
+                        <strong id="completedTasks">0</strong>
+                        <small>Finalizadas</small>
+                    </article>
+
+                </section>
+
+                <!-- RESUMO E PROGRESSO -->
+                <section class="overview-grid">
+
+                    <article class="panel productivity-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="panel-eyebrow">DESEMPENHO</span>
+                                <h2>VisÃ£o geral</h2>
+                            </div>
+                            <span class="panel-icon">â—‰</span>
+                        </div>
+
+                        <div class="productivity-content">
+
+                            <div class="progress-ring" id="progressRing" style="--progress: 0%">
+                                <div class="progress-ring-inner">
+                                    <strong id="completionRate">0%</strong>
+                                    <small>ConcluÃ­do</small>
+                                </div>
+                            </div>
+
+                            <div class="productivity-details">
+                                <div class="legend-item">
+                                    <span class="legend-dot green"></span>
+                                    <span>ConcluÃ­das</span>
+                                    <strong id="overviewDone">0</strong>
+                                </div>
+
+                                <div class="legend-item">
+                                    <span class="legend-dot orange"></span>
+                                    <span>Pendentes</span>
+                                    <strong id="overviewPending">0</strong>
+                                </div>
+
+                                <div class="legend-item">
+                                    <span class="legend-dot purple"></span>
+                                    <span>Em andamento</span>
+                                    <strong id="overviewProgress">0</strong>
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+
+                    <article class="panel attention-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <span class="panel-eyebrow">ATENÃ‡ÃƒO</span>
+                                <h2>Prazos importantes</h2>
+                            </div>
+                            <span class="panel-icon warning-icon">â—·</span>
+                        </div>
+
+                        <div class="deadline-summary">
+                            <div>
+                                <strong id="overdueTasks">0</strong>
+                                <span>Tarefas atrasadas</span>
+                            </div>
+
+                            <div>
+                                <strong id="todayTasks">0</strong>
+                                <span>Vencem hoje</span>
+                            </div>
+                        </div>
+
+                        <p class="panel-description">Acompanhe seus prazos para nÃ£o perder nenhuma entrega.</p>
+                    </article>
+
+                </section>
+
+                <!-- QUADRO KANBAN -->
+                <section class="board-section">
+
+                    <div class="section-heading">
+                        <div>
+                            <span class="panel-eyebrow">ORGANIZE SEU FLUXO</span>
+                            <h2>Quadro de tarefas</h2>
+                        </div>
+
+                        <div class="board-actions">
+                            <select id="filter" aria-label="Filtrar tarefas">
+                                <option value="all">Todas as tarefas</option>
+                                <option value="pending">Pendentes</option>
+                                <option value="progress">Em andamento</option>
+                                <option value="done">ConcluÃ­das</option>
+                            </select>
+
+                            <button id="openTaskModal" class="primary-button">
+                                <span>ï¼‹</span> Nova tarefa
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="kanban" aria-label="Quadro Kanban">
+
+                        <section class="kanban-column" data-status="pending">
+                            <div class="column-heading">
+                                <div>
+                                    <span class="column-dot orange"></span>
+                                    <h3>A fazer</h3>
+                                    <span class="column-count" id="pendingCount">0</span>
+                                </div>
+                            </div>
+                            <ul id="taskList" class="task-list"></ul>
+                            <button class="add-task-inline" data-add-status="pending">ï¼‹ Adicionar tarefa</button>
+                        </section>
+
+                        <section class="kanban-column" data-status="progress">
+                            <div class="column-heading">
+                                <div>
+                                    <span class="column-dot purple"></span>
+                                    <h3>Em andamento</h3>
+                                    <span class="column-count" id="progressCount">0</span>
+                                </div>
+                            </div>
+                            <ul id="progressList" class="task-list"></ul>
+                            <button class="add-task-inline" data-add-status="progress">ï¼‹ Adicionar tarefa</button>
+                        </section>
+
+                        <section class="kanban-column" data-status="done">
+                            <div class="column-heading">
+                                <div>
+                                    <span class="column-dot green"></span>
+                                    <h3>ConcluÃ­das</h3>
+                                    <span class="column-count" id="doneCount">0</span>
+                                </div>
+                            </div>
+                            <ul id="doneList" class="task-list"></ul>
+                            <button class="add-task-inline" data-add-status="done">ï¼‹ Adicionar tarefa</button>
+                        </section>
+
+                    </div>
+
+                    <div class="board-footer">
+                        <span id="counter" role="status" aria-live="polite">Tarefas: 0</span>
+                        <button id="clearDone" class="text-button">Limpar concluÃ­das</button>
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!-- MINHAS TAREFAS -->
+            <section class="page-section" id="tasksView">
+                <div class="page-heading">
+                    <span class="eyebrow">GERENCIAMENTO</span>
+                    <h1>Minhas tarefas</h1>
+                    <p>Visualize, pesquise e organize todas as suas atividades.</p>
+                </div>
+
+                <div class="panel task-list-panel">
+                    <div class="panel-heading">
+                        <h2>Lista de tarefas</h2>
+                        <button class="primary-button" data-open-task>ï¼‹ Nova tarefa</button>
+                    </div>
+                    <ul id="allTasksList" class="all-tasks-list"></ul>
+                </div>
+            </section>
+
+            <!-- CALENDÃRIO -->
+            <section class="page-section" id="calendarView">
+                <div class="page-heading">
+                    <span class="eyebrow">PLANEJAMENTO</span>
+                    <h1>CalendÃ¡rio</h1>
+                    <p>Consulte suas tarefas organizadas por data de entrega.</p>
+                </div>
+
+                <div class="panel calendar-panel">
+                    <div class="calendar-toolbar">
+                        <button id="previousMonth" class="icon-button" aria-label="MÃªs anterior">â€¹</button>
+                        <h2 id="calendarMonth">CalendÃ¡rio</h2>
+                        <button id="nextMonth" class="icon-button" aria-label="PrÃ³ximo mÃªs">â€º</button>
+                    </div>
+
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+            </section>
+
+            <!-- RELATÃ“RIOS -->
+            <section class="page-section" id="reportsView">
+                <div class="page-heading">
+                    <span class="eyebrow">PRODUTIVIDADE</span>
+                    <h1>RelatÃ³rios</h1>
+                    <p>Analise seu desempenho e acompanhe seus resultados.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <span>Total de tarefas</span>
+                        <strong id="reportTotal">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span>ConcluÃ­das</span>
+                        <strong id="reportDone">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span>Em andamento</span>
+                        <strong id="reportProgress">0</strong>
+                    </article>
+                    <article class="stat-card">
+                        <span>Atrasadas</span>
+                        <strong id="reportOverdue">0</strong>
+                    </article>
+                </div>
+
+                <div class="panel backup-panel">
+                    <div>
+                        <h2>Backup dos seus dados</h2>
+                        <p>Exporte suas tarefas ou importe um backup salvo anteriormente.</p>
+                    </div>
+
+                    <div class="backup-actions">
+                        <button id="exportTasks" class="secondary-button">â†“ Exportar JSON</button>
+                        <button id="importTasks" class="secondary-button">â†‘ Importar JSON</button>
+                        <input type="file" id="importFile" accept=".json,application/json" hidden>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="main-footer">
+            <span>Â© 2026 Nexus Task 2.0</span>
+            <span>Desenvolvido por <strong>AW TECHNOLOGY</strong></span>
+        </footer>
+
     </main>
 
-    <script src="js/script.js"></script>
+</div>
+
+<!-- OVERLAY MOBILE -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- MODAL DE TAREFA -->
+<div id="taskModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <div>
+                <span class="panel-eyebrow">ORGANIZAÃ‡ÃƒO</span>
+                <h2 id="taskModalTitle">Nova tarefa</h2>
+            </div>
+            <button id="closeTaskModal" class="icon-button" aria-label="Fechar">Ã—</button>
+        </div>
+
+        <form id="taskForm" class="task-form">
+
+            <label for="taskInput">TÃ­tulo da tarefa</label>
+            <input type="text" id="taskInput" placeholder="Ex.: Finalizar projeto..." required maxlength="100">
+
+            <label for="taskDescription">DescriÃ§Ã£o</label>
+            <textarea id="taskDescription" placeholder="Adicione detalhes sobre a atividade..." rows="3" maxlength="500"></textarea>
+
+            <div class="form-row">
+                <div>
+                    <label for="dueDate">Data de entrega</label>
+                    <input type="date" id="dueDate">
+                </div>
+
+                <div>
+                    <label for="priority">Prioridade</label>
+                    <select id="priority">
+                        <option value="alta">Alta</option>
+                        <option value="media" selected>MÃ©dia</option>
+                        <option value="baixa">Baixa</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label for="taskCategory">Categoria</label>
+                    <select id="taskCategory">
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Pessoal">Pessoal</option>
+                        <option value="Estudos">Estudos</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="taskStatus">Etapa</label>
+                    <select id="taskStatus">
+                        <option value="pending">A fazer</option>
+                        <option value="progress">Em andamento</option>
+                        <option value="done">ConcluÃ­da</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" id="cancelTaskModal" class="secondary-button">Cancelar</button>
+                <button type="submit" class="primary-button" id="submitTask">Salvar tarefa</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- MODAL DE EDIÃ‡ÃƒO -->
+<div id="editModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <div>
+                <span class="panel-eyebrow">EDIÃ‡ÃƒO</span>
+                <h2 id="modalTitle">Editar tarefa</h2>
+            </div>
+            <button id="closeEditModal" class="icon-button" aria-label="Fechar">Ã—</button>
+        </div>
+
+        <label for="editText">TÃ­tulo</label>
+        <input type="text" id="editText" placeholder="TÃ­tulo da tarefa" maxlength="100" required>
+
+        <label for="editDescription">DescriÃ§Ã£o</label>
+        <textarea id="editDescription" rows="3" maxlength="500"></textarea>
+
+        <div class="form-row">
+            <div>
+                <label for="editDate">Data de entrega</label>
+                <input type="date" id="editDate">
+            </div>
+
+            <div>
+                <label for="editPriority">Prioridade</label>
+                <select id="editPriority">
+                    <option value="alta">Alta</option>
+                    <option value="media">MÃ©dia</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="editCategory">Categoria</label>
+                <select id="editCategory">
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Pessoal">Pessoal</option>
+                    <option value="Estudos">Estudos</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="editStatus">Etapa</label>
+                <select id="editStatus">
+                    <option value="pending">A fazer</option>
+                    <option value="progress">Em andamento</option>
+                    <option value="done">ConcluÃ­da</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button id="cancelEdit" class="secondary-button">Cancelar</button>
+            <button id="saveEdit" class="primary-button">Salvar alteraÃ§Ãµes</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- NOTIFICAÃ‡Ã•ES -->
+<div class="notification-panel" id="notificationPanel" aria-hidden="true">
+    <div class="notification-panel-header">
+        <h2>NotificaÃ§Ãµes</h2>
+        <button id="closeNotifications" class="icon-button" aria-label="Fechar">Ã—</button>
+    </div>
+    <div id="notificationList" class="notification-list">
+        <p class="empty-state">Nenhuma notificaÃ§Ã£o no momento.</p>
+    </div>
+</div>
+
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>
